@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TwoConnect · Cavi USB-C → USB-A</title>
+  <meta name="description" content="TwoConnect: cavi USB-C → USB-A di qualità, pagamento sicuro PayPal, spedizione tracciata in 1-3 giorni.">
+  <style>
+    :root{
+      --bg:#0a0a0a; --card:#111318; --muted:#cfd4dc;
+      --brand1:#000000; --brand2:#4169E1; --accent:#2a5fe8;
+      --ok:#19c37d; --danger:#ff5c5c;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#0c0f18);color:#fff}
+    a{color:#bcd0ff;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(90deg,var(--brand1),var(--brand2));
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:10px 18px;display:flex;align-items:center;gap:16px;justify-content:space-between;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;width:auto;border-radius:10px;display:block}
+    .brand .title{font-weight:800;letter-spacing:.2px}
+    nav{display:flex;flex-wrap:wrap;gap:14px}
+    nav a{font-weight:600;opacity:.95}
+    .cta{background:linear-gradient(90deg,var(--brand1),var(--brand2));border:none;color:#fff;padding:10px 16px;border-radius:12px;cursor:pointer;font-weight:700;transition:.15s}
+    .cta:hover{transform:translateY(-1px);opacity:.95}
+
+    /* Layout */
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 18px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;padding:28px 0}
+    .hero h1{margin:0 0 8px;font-size:clamp(28px,3.5vw,42px)}
+    .hero p{margin:0;color:var(--muted)}
+    .heroCard{background:linear-gradient(180deg,#0e1016,#0b0d13);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:22px}
+
+    /* Product card */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg,#0e1118,#0a0c12);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}
+    .card h3{margin:6px 0 4px}
+    .muted{color:var(--muted)}
+    .price{font-weight:800;font-size:22px;margin:6px 0 12px}
+    .select,.input{width:100%;padding:10px 12px;border-radius:12px;background:#0e1118;color:#fff;border:1px solid rgba(255,255,255,.08)}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--brand1),var(--brand2));border:none;color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
+    .btn.secondary{background:#1b1f2a;border:1px solid rgba(255,255,255,.08)}
+    .btn.danger{background:#301718;border:1px solid #5a2629}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+
+    /* Cart */
+    .cartTable{width:100%;border-collapse:collapse}
+    .cartTable th,.cartTable td{padding:10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+    .qtyCtl{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.15);border-radius:10px;overflow:hidden}
+    .qtyCtl button{all:unset;padding:6px 10px;cursor:pointer}
+    .totals{display:flex;justify-content:flex-end;gap:24px;flex-wrap:wrap}
+    .totals .box{min-width:260px;background:#0e1118;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px}
+    .totals .line{display:flex;justify-content:space-between;margin:6px 0}
+    .totals .grand{font-weight:900;font-size:18px}
+
+    /* Checkout */
+    .formGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    label{font-size:13px;color:#c8d1e5}
+    .check{display:flex;gap:10px;align-items:flex-start;margin-top:8px}
+    .notice{font-size:13px;color:#b6c3e8}
+
+    /* FAQ */
+    #faq details{background:#0e1118;border:1px solid rgba(255,255,255,.06);border-radius:14px;margin:10px 0;overflow:hidden}
+    #faq summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none}
+    #faq p{padding:0 16px 16px 16px;margin:0;color:#cfd4dc}
+
+    /* Footer */
+    footer{margin-top:32px;padding:20px 18px;background:linear-gradient(90deg,var(--brand1),var(--brand2));border-top:1px solid rgba(255,255,255,.08);text-align:center}
+    .tiny{font-size:12px;color:#e6ebff}
+
+    @media (max-width:860px){ .hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer">
+      <img src="logo.png" alt="TwoConnect logo" />
+      <div class="title">TwoConnect</div>
+    </div>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#cart">Carrello</a>
+      <a href="#checkout">Checkout</a>
+      <a href="#faq">FAQ</a>
+      <a href="#legal">Legale</a>
+      <a href="#contacts">Contatti</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <h1>Cavi USB-C → USB-A affidabili. Pagamento sicuro, spedizione tracciata.</h1>
+        <p>Ordina in pochi clic. Spedizione tracciata 1-3 giorni lavorativi in tutta Italia. Paghi con PayPal.</p>
+      </div>
+      <div class="heroCard">
+        <div class="muted">Spedizione</div>
+        <div><strong>€5</strong> corriere tracciato (Italia): consegna 1-3 giorni.</div>
+        <div class="muted" style="margin-top:8px">Supporto</div>
+        <div>WhatsApp <a href="https://wa.me/393505997580" target="_blank">+39 350 599 7580</a> · Email <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a></div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop">
+      <h2>Shop</h2>
+      <div class="grid">
+        <!-- PRODOTTO 1 -->
+        <article class="card" id="p-usbc-usba-bianco">
+          <img src="product-1.jpg" alt="Cavo USB-C → USB-A bianco" style="width:100%;border-radius:12px;aspect-ratio:1.6/1;object-fit:cover;background:#0b0e15" onerror="this.src='https://via.placeholder.com/800x500?text=Cavo+USB-C+%E2%86%92+USB-A';">
+          <h3>Cavo USB-C → USB-A (Bianco)</h3>
+          <p class="muted">Ricarica e dati. Connettori rinforzati, compatibile con la maggior parte dei dispositivi USB-C.</p>
+          <div class="price">Da €15</div>
+          <label for="variant1">Seleziona confezione</label>
+          <select id="variant1" class="select">
+            <option value="15">1 pezzo — €15</option>
+            <option value="20">2 pezzi — €20</option>
+          </select>
+          <div class="row" style="margin-top:10px">
+            <button class="btn" onclick="addProduct('Cavo USB-C → USB-A (Bianco)', parseFloat(document.getElementById('variant1').value))">Aggiungi al carrello</button>
+            <button class="btn secondary" onclick="quickBuy('Cavo USB-C → USB-A (Bianco)', parseFloat(document.getElementById('variant1').value))">Acquista ora</button>
+          </div>
+        </article>
+        <!-- (Quando avrai nuovi prodotti, duplica <article class="card"> cambiando immagine, nome e prezzi) -->
+      </div>
+    </section>
+
+    <!-- CART -->
+    <section id="cart" style="margin-top:26px">
+      <h2>Carrello</h2>
+      <div class="card">
+        <div style="overflow:auto">
+          <table class="cartTable" id="cartTable">
+            <thead>
+              <tr><th>Prodotto</th><th>Prezzo</th><th>Qtà</th><th>Subtotale</th><th></th></tr>
+            </thead>
+            <tbody id="cartBody"><tr><td colspan="5" class="muted">Il carrello è vuoto.</td></tr></tbody>
+          </table>
+        </div>
+        <div class="totals" style="margin-top:14px">
+          <div class="box">
+            <div class="line"><span>Subtotale</span><strong id="subtotal">€0,00</strong></div>
+            <div class="line"><span>Spedizione (Italia)</span><strong id="shipping">€0,00</strong></div>
+            <div class="line grand"><span>Totale</span><strong id="grand">€0,00</strong></div>
+            <div class="row" style="margin-top:10px">
+              <button class="btn" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})" id="toCheckout" disabled>Vai al checkout</button>
+              <button class="btn secondary" onclick="clearCart()">Svuota</button>
+            </div>
+            <div class="notice">La spedizione è <strong>€5</strong> per ordine (solo Italia). Viene applicata se il carrello non è vuoto.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section id="checkout" style="margin-top:26px">
+      <h2>Checkout</h2>
+      <div class="card">
+        <p class="muted">Compila i dati per la spedizione. I tuoi dati saranno usati solo per evadere l’ordine (vedi <a href="#privacy">Privacy</a>).</p>
+        <form id="orderForm">
+          <div class="formGrid">
+            <div>
+              <label>Nome*</label>
+              <input class="input" name="nome" required>
+            </div>
+            <div>
+              <label>Cognome*</label>
+              <input class="input" name="cognome" required>
+            </div>
+            <div style="grid-column:1/-1">
+              <label>Indirizzo (via e numero civico)*</label>
+              <input class="input" name="indirizzo" required>
+            </div>
+            <div>
+              <label>Città*</label>
+              <input class="input" name="citta" required>
+            </div>
+            <div>
+              <label>Provincia*</label>
+              <input class="input" name="provincia" required>
+            </div>
+            <div>
+              <label>CAP*</label>
+              <input class="input" name="cap" pattern="\\d{5}" required>
+            </div>
+            <div>
+              <label>Telefono*</label>
+              <input class="input" name="telefono" required>
+            </div>
+            <div style="grid-column:1/-1">
+              <label>Email*</label>
+              <input class="input" type="email" name="email" required>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label>Note per la consegna (opzionale)</label>
+            <textarea class="input" name="note" rows="3" placeholder="Citofono, orari, ecc."></textarea>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" id="agree" required>
+            <label for="agree">Dichiaro di aver letto e accettato i <a href="#terms">Termini e condizioni</a> e la <a href="#privacy">Privacy policy</a>.</label>
+          </div>
+
+          <!-- Questi campi vengono compilati via JS -->
+          <input type="hidden" name="ordine" id="orderSummary">
+          <input type="hidden" name="totale" id="orderTotal">
+
+          <div class="row" style="margin-top:14px">
+            <button type="button" class="btn" onclick="submitAndPay()">Conferma & paga con PayPal</button>
+            <button type="button" class="btn secondary" onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">Torna al carrello</button>
+          </div>
+          <div id="formMsg" class="notice" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top:26px">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>In quanto tempo riceverò il mio ordine?</summary>
+        <p>Spediamo con corriere tracciato. La consegna avviene in 1-3 giorni lavorativi dalla conferma del pagamento.</p>
+      </details>
+
+      <details>
+        <summary>Quanto costa la spedizione?</summary>
+        <p>€5 fissi per ordine in tutta Italia.</p>
+      </details>
+
+      <details>
+        <summary>Quali metodi di pagamento accettate?</summary>
+        <p>PayPal. Dopo il checkout verrai reindirizzato alla pagina di pagamento sicuro di PayPal.</p>
+      </details>
+
+      <details>
+        <summary>Posso restituire il prodotto?</summary>
+        <p>Sì. Hai 14 giorni dal ricevimento per esercitare il diritto di recesso. Il prodotto deve essere integro e completo degli imballi. Vedi la sezione “Diritto di recesso”.</p>
+      </details>
+
+      <details>
+        <summary>Il cavo è compatibile con il mio dispositivo?</summary>
+        <p>È un cavo USB-C → USB-A, compatibile con la maggior parte dei dispositivi che usano USB-C. Per ricarica e trasferimento dati standard.</p>
+      </details>
+
+      <details>
+        <summary>Ricevo la tracciabilità?</summary>
+        <p>Sì, inviamo il codice di tracciamento appena il pacco è affidato al corriere.</p>
+      </details>
+
+      <details>
+        <summary>Come contatto l’assistenza?</summary>
+        <p>WhatsApp <a href="https://wa.me/393505997580" target="_blank">+39 350 599 7580</a> • Email <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a></p>
+      </details>
+    </section>
+
+    <!-- LEGALE -->
+    <section id="legal" style="margin-top:26px">
+      <h2>Informazioni legali</h2>
+
+      <h3 id="terms">Termini e condizioni di vendita</h3>
+      <p class="muted">Venditore: TwoConnect · Contatti: <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a> · WhatsApp <a href="https://wa.me/393505997580" target="_blank">+39 350 599 7580</a>.</p>
+      <ul>
+        <li><strong>Prezzi:</strong> IVA inclusa ove applicabile. Spedizione fissa €5 (Italia).</li>
+        <li><strong>Pagamenti:</strong> tramite PayPal (reindirizzamento su paypal.com).</li>
+        <li><strong>Spedizioni:</strong> 1-3 giorni lavorativi con servizio tracciato.</li>
+        <li><strong>Assistenza ordini:</strong> via email o WhatsApp con numero ordine.</li>
+        <li><strong>Garanzia legale di conformità:</strong> come da Codice del Consumo (D.Lgs. 206/2005) per clienti consumatori.</li>
+        <li><strong>Resi & rimborsi:</strong> vedere “Diritto di recesso”.</li>
+      </ul>
+
+      <h3 id="privacy">Privacy Policy (informativa art. 13 GDPR)</h3>
+      <p>Raccogliamo i dati inseriti nel modulo d’ordine (nome, cognome, indirizzo, email, telefono, note) esclusivamente per processare e spedire l’ordine, nonché per obblighi amministrativi/contabili. Base giuridica: esecuzione del contratto (art. 6.1.b GDPR) e adempimenti di legge (art. 6.1.c GDPR). I dati non sono ceduti a terzi, salvo fornitori coinvolti nella spedizione e nel pagamento (es. corrieri e PayPal). Conserviamo i dati per il tempo necessario all’evasione dell’ordine e adempimenti fiscali. Puoi esercitare i diritti di accesso, rettifica, cancellazione e opposizione scrivendo a <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a>.</p>
+
+      <h3 id="withdrawal">Diritto di recesso</h3>
+      <p>Se acquisti come consumatore, hai 14 giorni dalla consegna per recedere senza dover fornire motivazioni. Per esercitare il recesso, scrivi a <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a> indicando numero ordine e prodotti. I prodotti devono essere integri e completi degli imballi. Una volta ricevuto il reso, rimborseremo gli importi pagati (escluse eventuali spese di spedizione supplementari) entro 14 giorni, utilizzando lo stesso metodo di pagamento.</p>
+      <p class="tiny">Questi testi sono modelli standard; verifica con un consulente per esigenze fiscali specifiche.</p>
+    </section>
+
+    <!-- CONTATTI -->
+    <section id="contacts" style="margin-top:26px">
+      <h2>Contatti</h2>
+      <div class="card">
+        <p>WhatsApp: <a href="https://wa.me/393505997580" target="_blank">+39 350 599 7580</a><br>
+        Email: <a href="mailto:mattiafurfaro61@gmail.com">mattiafurfaro61@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 TwoConnect · <a href="#terms">Termini</a> · <a href="#privacy">Privacy</a> · <a href="#withdrawal">Recesso</a></div>
+    <div class="tiny">Pagamento gestito da PayPal · Spedizione tracciata in 1-3 giorni · Italia</div>
+  </footer>
+
+  <script>
+    /* ====== CONFIG ====== */
+    const SHIPPING = 5;
+    const PAYPAL_BUSINESS = "mattia.furfaro59@gmail.com"; // email PayPal nuova
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_ME"; // <-- SOSTITUISCI con il tuo link Formspree
+
+    /* ====== CART LOGIC ====== */
+    const cart = [];
+
+    function addProduct(name, price){
+      const key = name + " €" + price.toFixed(2);
+      const found = cart.find(i => i.key === key);
+      if(found){ found.qty += 1; }
+      else{ cart.push({key, name, price, qty:1}); }
+      renderCart();
+      document.getElementById('cart').scrollIntoView({behavior:'smooth'});
+    }
+
+    // "Acquista ora": aggiunge al carrello e porta al checkout
+    function quickBuy(name, price){
+      addProduct(name, price);
+      document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
+    }
+
+    function changeQty(key, d){
+      const it = cart.find(i=>i.key===key);
+      if(!it) return;
+      it.qty += d;
+      if(it.qty<=0){
+        const idx = cart.findIndex(i=>i.key===key);
+        cart.splice(idx,1);
+      }
+      renderCart();
+    }
+
+    function removeItem(key){
+      const idx = cart.findIndex(i=>i.key===key);
+      if(idx>-1){ cart.splice(idx,1); renderCart(); }
+    }
+
+    function clearCart(){
+      cart.splice(0, cart.length);
+      renderCart();
+    }
+
+    function totals(){
+      const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      const shipping = cart.length ? SHIPPING : 0;
+      const grand = subtotal + shipping;
+      return {subtotal, shipping, grand};
+    }
+
+    function euro(n){ return "€"+n.toFixed(2).replace(".",","); }
+
+    function renderCart(){
+      const body = document.getElementById('cartBody');
+      body.innerHTML = "";
+      if(cart.length===0){
+        body.innerHTML = '<tr><td colspan="5" class="muted">Il carrello è vuoto.</td></tr>';
+      }else{
+        cart.forEach(it=>{
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${it.name}</td>
+            <td>${euro(it.price)}</td>
+            <td>
+              <span class="qtyCtl">
+                <button onclick="changeQty('${it.key}',-1)">−</button>
+                <span style="padding:0 10px">${it.qty}</span>
+                <button onclick="changeQty('${it.key}',+1)">+</button>
+              </span>
+            </td>
+            <td>${euro(it.price*it.qty)}</td>
+            <td><button class="btn danger" onclick="removeItem('${it.key}')">Rimuovi</button></td>
+          `;
+          body.appendChild(tr);
+        });
+      }
+      const t = totals();
+      document.getElementById('subtotal').textContent = euro(t.subtotal);
+      document.getElementById('shipping').textContent = euro(t.shipping);
+      document.getElementById('grand').textContent = euro(t.grand);
+      document.getElementById('toCheckout').disabled = cart.length===0;
+      // Prepara riepilogo per il form
+      const summary = cart.map(i=>`${i.name} x${i.qty} — ${euro(i.price*i.qty)}`).join(" | ");
+      document.getElementById('orderSummary').value = summary || "Carrello vuoto";
+      document.getElementById('orderTotal').value = t.grand.toFixed(2);
+    }
+
+    // PayPal redirect con importo totale
+    function openPayPal(total){
+      const item = encodeURIComponent("Ordine TwoConnect");
+      const amount = encodeURIComponent(total.toFixed(2));
+      const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_BUSINESS)}&item_name=${item}&amount=${amount}&currency_code=EUR`;
+      window.open(url,"_blank");
+    }
+
+    // Invia dati a Formspree + apre PayPal
+    async function submitAndPay(){
+      if(cart.length===0){ alert("Aggiungi almeno un prodotto al carrello."); return; }
+      const form = document.getElementById('orderForm');
+      if(!form.reportValidity()){ return; }
+      if(!document.getElementById('agree').checked){ alert("Devi accettare Termini e Privacy."); return; }
+
+      const t = totals();
+      // prepara payload
+      const data = new FormData(form);
+      data.set("ordine", document.getElementById('orderSummary').value);
+      data.set("totale", document.getElementById('orderTotal').value);
+
+      const msg = document.getElementById('formMsg');
+      msg.textContent = "Invio dati ordine…";
+
+      try{
+        if(!FORMSPREE_ENDPOINT.includes("/f/")){
+          alert("⚠️ Ricorda di sostituire FORMSPREE_ENDPOINT nel codice con il tuo link Formspree.");
+        }else{
+          const res = await fetch(FORMSPREE_ENDPOINT, { method:"POST", body:data });
+          if(res.ok){ msg.textContent = "Dati inviati. Si apre PayPal per il pagamento…"; }
+          else{ msg.textContent = "Invio non confermato, continuo con PayPal."; }
+        }
+      }catch(e){
+        msg.textContent = "Non sono riuscito a contattare il servizio. Continuo con PayPal.";
+      }
+
+      openPayPal(t.grand);
+    }
+
+    // init
+    renderCart();
+  </script>
+</body>
+</html>
