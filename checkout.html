@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - TwoConnect</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="TwoConnect Logo">
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Carrello</a>
+      <a href="faq.html">FAQ</a>
+      <a href="legal.html">Legale</a>
+      <a href="contact.html">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Checkout</h1>
+    <form id="checkout-form">
+      <label>Nome e Cognome <input type="text" required></label>
+      <label>Indirizzo <input type="text" required></label>
+      <label>Email <input type="email" required></label>
+      <label>Telefono <input type="tel" required></label>
+      <label>
+        <input type="checkbox" required>
+        Accetto i <a href="legal.html">Termini e Privacy</a>
+      </label>
+      <button type="button" class="btn" onclick="payWithPaypal()">Paga con PayPal</button>
+    </form>
+  </main>
+</body>
+</html>

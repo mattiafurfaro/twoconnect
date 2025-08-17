@@ -1,0 +1,104 @@
+/* ---- STILE GENERALE ---- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #000000, #1a2a6c); /* nero → blu royal */
+  color: white;
+  text-align: center;
+}
+
+/* ---- HEADER ---- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+}
+
+header .logo img {
+  height: 50px; /* Logo più grande */
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #4da6ff;
+}
+
+/* ---- PRODOTTO ---- */
+.product {
+  margin: 40px auto;
+  max-width: 600px;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+
+/* ---- SLIDER ---- */
+.slider {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.slides img {
+  display: none;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.slides img.active {
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #1a2a6c;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4da6ff;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+}
+
+footer a {
+  color: #4da6ff;
+  text-decoration: none;
+}

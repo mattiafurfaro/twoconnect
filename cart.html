@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrello - TwoConnect</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="TwoConnect Logo">
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html" class="active">Carrello</a>
+      <a href="faq.html">FAQ</a>
+      <a href="legal.html">Legale</a>
+      <a href="contact.html">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Il tuo carrello</h1>
+    <table id="cart-table">
+      <thead>
+        <tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th><th>Totale</th><th>Rimuovi</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p id="shipping">Spedizione: €5 (corriere tracciato)</p>
+    <h2 id="cart-total">Totale: €0</h2>
+    <a href="checkout.html" class="btn">Vai al checkout</a>
+  </main>
+</body>
+</html>

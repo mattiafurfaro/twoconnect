@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>TwoConnect - Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="TwoConnect Logo">
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Carrello</a>
+      <a href="faq.html">FAQ</a>
+      <a href="legal.html">Legale</a>
+      <a href="contact.html">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>I nostri prodotti</h1>
+    <section class="products">
+      <article class="card product">
+        <img src="cavo-bianco.jpg" alt="Cavo USB-C → USB-A Bianco">
+        <h3>Cavo USB-C → USB-A (Bianco)</h3>
+        <p>Cavo resistente, ideale per ricarica e trasferimento dati.</p>
+        <div class="price">€15</div>
+        <button class="btn" onclick="addToCart('Cavo Bianco USB-C → USB-A', 15)">Aggiungi al carrello</button>
+      </article>
+
+<div class="slider">
+  <div class="slides">
+    <img src="cavo1.jpg" alt="Cavo USB-C" class="active">
+    <img src="cavo2.jpg" alt="Cavo USB-C">
+  </div>
+  <button class="prev" onclick="prevSlide()">&#10094;</button>
+  <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
